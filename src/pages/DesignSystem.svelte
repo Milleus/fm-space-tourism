@@ -151,5 +151,30 @@
         </div>
       </div>
     </section>
+
+    <section id="interactive-elements" style="margin: 4rem 0 8rem;">
+      <h2 class="numbered-title" style="margin-bottom: 3rem;">
+        <span>03</span> Interactive elements
+      </h2>
+
+      <div
+        class="grid"
+        style="place-items: center; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(81.5485px);"
+      >
+        <Navigation
+          links={[
+            { href: "#", text: "Active", isActive: true },
+            { href: "#", text: "Hovered" },
+            { href: "#", text: "Idle" },
+          ]}
+        />
+      </div>
+      <p
+        class="text-accent ff-sans-normal fs-400"
+        style="margin: 1.5rem 0 5rem; text-align: center;"
+      >
+        Different States of Navigation Bar
+      </p>
+    </section>
   </div>
 </main>
