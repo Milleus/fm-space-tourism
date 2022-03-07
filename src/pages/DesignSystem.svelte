@@ -206,6 +206,20 @@
           >
             Tabs (Active, Hover, & Idle)
           </p>
+
+          <SliderDots
+            dots={[
+              { srText: "Moon", isActive: true },
+              { srText: "Mars" },
+              { srText: "Europa" },
+            ]}
+          />
+          <p
+            class="text-accent ff-sans-normal fs-400"
+            style="margin: 1.5rem 0 4rem;"
+          >
+            Slider 1 States (Active, Hover, & Idle)
+          </p>
       </div>
     </section>
   </div>
