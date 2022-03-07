@@ -175,6 +175,22 @@
       >
         Different States of Navigation Bar
       </p>
+
+      <div class="flex">
+        <div
+          class="grid"
+          style="flex-basis: 100%; justify-content: center; text-align: center;"
+        >
+          <div>
+            <Button href="#" text="Explore" />
+            <p
+              class="text-accent ff-sans-normal fs-400"
+              style="margin: 1.5rem 0 4rem;"
+            >
+              Landing Page Main Button(Idle, & Hover)
+            </p>
+          </div>
+        </div>
     </section>
   </div>
 </main>
