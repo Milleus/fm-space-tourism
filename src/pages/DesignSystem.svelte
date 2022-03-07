@@ -220,6 +220,15 @@
           >
             Slider 1 States (Active, Hover, & Idle)
           </p>
+
+          <SliderNumbers length={3} activeIndex={0} />
+          <p
+            class="text-accent ff-sans-normal fs-400"
+            style="margin: 1.5rem 0 4rem;"
+          >
+            Slider 2 States (Active, Hover, & Idle)
+          </p>
+        </div>
       </div>
     </section>
   </div>
