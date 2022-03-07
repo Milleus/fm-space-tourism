@@ -191,6 +191,22 @@
             </p>
           </div>
         </div>
+
+        <div class="grid" style="flex-basis: 100%; place-items: center;">
+          <Tabs
+            tabs={[
+              { text: "Moon", isActive: true },
+              { text: "Mars" },
+              { text: "Europa" },
+            ]}
+          />
+          <p
+            class="text-accent ff-sans-normal fs-400"
+            style="margin: 1.5rem 0 4rem;"
+          >
+            Tabs (Active, Hover, & Idle)
+          </p>
+      </div>
     </section>
   </div>
 </main>
