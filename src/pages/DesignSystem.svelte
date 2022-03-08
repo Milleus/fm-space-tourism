@@ -182,7 +182,7 @@
           style="flex-basis: 100%; justify-content: center; text-align: center;"
         >
           <div>
-            <Button href="#" text="Explore" />
+            <Button href="#">Explore</Button>
             <p
               class="text-accent ff-sans-normal fs-400"
               style="margin: 1.5rem 0 4rem;"

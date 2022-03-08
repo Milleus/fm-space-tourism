@@ -16,6 +16,6 @@
   };
 </script>
 
-<a href={urls.home} use:link>Home</a>
-<a href={urls.designSystem} use:link>Design System</a>
+<!-- <a href={urls.home} use:link>Home</a>
+<a href={urls.designSystem} use:link>Design System</a> -->
 <Router {routes} />

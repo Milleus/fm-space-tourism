@@ -1,17 +1,17 @@
 <script lang="ts">
   export let href: string;
-  export let text: string;
 </script>
 
-<a {href} class="large-button uppercase ff-serif fs-600 text-dark bg-white">
-  {text}
+<a {href} class="large-button uppercase ff-serif text-dark bg-white">
+  <slot />
 </a>
 
 <style>
   .large-button {
+    font-size: 2rem;
     position: relative;
-    display: grid;
     z-index: 1;
+    display: inline-grid;
     place-items: center;
     padding: 0 2em;
     aspect-ratio: 1;
