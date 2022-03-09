@@ -11,7 +11,7 @@
   <a class="skip-to-content" href="#main">Skip to content</a>
   <header class="primary-header flex">
     <div>
-      <img class="logo" src="/shared/logo.svg" alt="space tourism logo" />
+      <img class="logo" src="assets/shared/logo.svg" alt="space tourism logo" />
     </div>
     <div class="line" />
     <Navigation
@@ -54,7 +54,7 @@
     grid-template-rows: min-content 1fr;
     background-size: cover;
     background-position: bottom center;
-    background-image: url("/home/background-home-mobile.jpg");
+    background-image: url("../assets/home/background-home-mobile.jpg");
   }
 
   .primary-header {
@@ -69,13 +69,13 @@
   @media (min-width: 35em) {
     .home {
       background-position: center center;
-      background-image: url("/home/background-home-tablet.jpg");
+      background-image: url("../assets/home/background-home-tablet.jpg");
     }
   }
 
   @media (min-width: 45em) {
     .home {
-      background-image: url("/home/background-home-desktop.jpg");
+      background-image: url("../assets/home/background-home-desktop.jpg");
     }
 
     .line {

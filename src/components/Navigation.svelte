@@ -97,7 +97,7 @@
       top: 2rem;
       background: transparent;
       border: 0;
-      background-image: url("/shared/icon-hamburger.svg");
+      background-image: url("../assets/shared/icon-hamburger.svg");
       background-repeat: no-repeat;
       background-position: center;
       width: 1.5rem;
@@ -105,7 +105,7 @@
     }
 
     .mobile-nav-toggle[aria-expanded="true"] {
-      background-image: url("/shared/icon-close.svg");
+      background-image: url("../assets/shared/icon-close.svg");
     }
 
     .mobile-nav-toggle:focus-visible {
