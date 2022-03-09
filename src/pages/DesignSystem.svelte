@@ -1,9 +1,8 @@
 <script lang="ts">
-  import Button from "../components/Button.svelte";
-  import Navigation from "../components/Navigation.svelte";
-  import SliderDots from "../components/SliderDots.svelte";
-  import SliderNumbers from "../components/SliderNumbers.svelte";
-  import Tabs from "../components/Tabs.svelte";
+  import Button from "../shared-components/Button.svelte";
+  import SliderDots from "../shared-components/SliderDots.svelte";
+  import SliderNumbers from "../shared-components/SliderNumbers.svelte";
+  import Tabs from "../shared-components/Tabs.svelte";
 </script>
 
 <main>
@@ -157,24 +156,17 @@
         <span>03</span> Interactive elements
       </h2>
 
-      <div
+      <!-- <div
         class="grid"
         style="place-items: center; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(81.5485px);"
       >
-        <Navigation
-          links={[
-            { href: "#", text: "Active", isActive: true },
-            { href: "#", text: "Hovered" },
-            { href: "#", text: "Idle" },
-          ]}
-        />
       </div>
       <p
         class="text-accent ff-sans-normal fs-400"
         style="margin: 1.5rem 0 5rem; text-align: center;"
       >
         Different States of Navigation Bar
-      </p>
+      </p> -->
 
       <div class="flex">
         <div

@@ -1,28 +1,18 @@
 <script>
-  import Button from "../components/Button.svelte";
-  import Navigation from "../components/Navigation.svelte";
+  import { PageUrls } from "../App.svelte";
+
+  import Header from "../components/Header.svelte";
+  import Button from "../shared-components/Button.svelte";
 </script>
 
 <svelte:head>
   <title>Frontend Mentor | Space tourism website</title>
 </svelte:head>
 
+<a class="skip-to-content" href="#main">Skip to content</a>
+
 <div class="home">
-  <a class="skip-to-content" href="#main">Skip to content</a>
-  <header class="primary-header flex">
-    <div>
-      <img class="logo" src="assets/shared/logo.svg" alt="space tourism logo" />
-    </div>
-    <div class="line" />
-    <Navigation
-      links={[
-        { href: "/", text: "Home", isActive: true },
-        { href: "/destination", text: "Destination" },
-        { href: "/crew", text: "Crew" },
-        { href: "/technology", text: "Technology" },
-      ]}
-    />
-  </header>
+  <Header />
 
   <main id="main" class="grid-container grid-container--home">
     <div>
@@ -57,15 +47,6 @@
     background-image: url("../assets/home/background-home-mobile.jpg");
   }
 
-  .primary-header {
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .logo {
-    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
-  }
-
   @media (min-width: 35em) {
     .home {
       background-position: center center;
@@ -78,19 +59,17 @@
       background-image: url("../assets/home/background-home-desktop.jpg");
     }
 
-    .line {
-      display: block;
-      position: relative;
-      height: 1px;
-      width: 100%;
-      margin-right: -2.5rem;
-      z-index: 2000;
-      background: hsl(var(--clr-white) / 0.25);
-    }
-
     .grid-container--home {
       padding-bottom: max(6rem, 20vh);
       align-items: end;
+    }
+
+    .grid-container--home > *:first-child {
+      grid-column: 2;
+    }
+
+    .grid-container--home > *:last-child {
+      grid-column: 3;
     }
   }
 </style>

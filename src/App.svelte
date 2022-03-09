@@ -1,21 +1,26 @@
+<script lang="ts" context="module">
+  export const PageUrls = {
+    DESIGN_SYSTEM: "/design-system",
+    HOME: "/",
+    DESTINATION: "/destination",
+    CREW: "/crew",
+    TECHNOLOGY: "/technology",
+  };
+</script>
+
 <script lang="ts">
   import Router from "svelte-spa-router";
-  import { link } from "svelte-spa-router";
+
   import Home from "./pages/Home.svelte";
   import DesignSystem from "./pages/DesignSystem.svelte";
-
-  const urls = {
-    home: "/",
-    designSystem: "/design-system",
-  };
+  import Destination from "./pages/Destination.svelte";
 
   const routes = {
-    [urls.home]: Home,
-    [urls.designSystem]: DesignSystem,
+    [PageUrls.DESIGN_SYSTEM]: DesignSystem,
+    [PageUrls.HOME]: Home,
+    [PageUrls.DESTINATION]: Destination,
     // TODO: add not found page
   };
 </script>
 
-<!-- <a href={urls.home} use:link>Home</a>
-<a href={urls.designSystem} use:link>Design System</a> -->
 <Router {routes} />

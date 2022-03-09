@@ -1,48 +1,80 @@
 <script lang="ts">
-  type Link = {
-    href: string;
-    text: string;
-    isActive?: boolean;
-  };
+  import { link } from "svelte-spa-router";
+  import { PageUrls } from "../App.svelte";
 
-  export let links: Array<Link>;
-  export let style: string = undefined;
   let isMenuOpen: boolean = false;
 
-  const toggleMenu = () => {
+  const navItems = [
+    { href: PageUrls.HOME, text: "Home" },
+    { href: PageUrls.DESTINATION, text: "Destination" },
+    { href: PageUrls.CREW, text: "Crew" },
+    { href: PageUrls.TECHNOLOGY, text: "Technology" },
+  ];
+
+  const toggleMenu = (): void => {
     isMenuOpen = !isMenuOpen;
+  };
+
+  const checkActive = (href: string): boolean => {
+    const hashPath = window.location.hash.split("#")[1];
+
+    if (!hashPath && href === PageUrls.HOME) {
+      return true;
+    }
+
+    return hashPath === href ? true : false;
   };
 </script>
 
-<button
-  class="mobile-nav-toggle"
-  aria-controls="primary-navigation"
-  aria-expanded={isMenuOpen}
-  on:click={toggleMenu}
->
-  <span class="sr-only">Menu</span>
-</button>
-<nav>
-  <ul
-    id="primary-navigation"
-    data-visible={isMenuOpen}
-    class="primary-navigation underline-indicators flex"
-    {style}
+<header class="primary-header flex">
+  <div>
+    <img class="logo" src="assets/shared/logo.svg" alt="space tourism logo" />
+  </div>
+
+  <div class="line" />
+
+  <button
+    class="mobile-nav-toggle"
+    aria-controls="primary-navigation"
+    aria-expanded={isMenuOpen}
+    on:click={toggleMenu}
   >
-    {#each links as link, i}
-      <li class={link.isActive && "active"}>
-        <a
-          class="uppercase ff-sans-cond text-white letter-spacing-2"
-          href={link.href}
-        >
-          <span aria-hidden="true">{i < 10 ? `0${i}` : `${i}`}</span>{link.text}
-        </a>
-      </li>
-    {/each}
-  </ul>
-</nav>
+    <span class="sr-only">Menu</span>
+  </button>
+
+  <nav>
+    <ul
+      id="primary-navigation"
+      data-visible={isMenuOpen}
+      class="primary-navigation underline-indicators flex"
+    >
+      {#each navItems as navItem, i}
+        {@const active = checkActive(navItem.href)}
+        <li class:active>
+          <a
+            class="uppercase ff-sans-cond text-white letter-spacing-2"
+            href={navItem.href}
+            use:link
+          >
+            <span aria-hidden="true">{i < 10 ? `0${i}` : `${i}`}</span
+            >{navItem.text}
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </nav>
+</header>
 
 <style>
+  .primary-header {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  }
+
   .mobile-nav-toggle {
     display: none;
   }
@@ -127,7 +159,12 @@
     }
 
     .primary-navigation.underline-indicators > .active {
-      border: 0;
+      border-color: transparent;
+    }
+
+    .primary-navigation.underline-indicators > .active:hover,
+    .primary-navigation.underline-indicators > .active:focus {
+      border-color: hsl(var(--clr-white) / 0.5);
     }
 
     .primary-navigation[data-visible="true"] {
@@ -148,6 +185,16 @@
   }
 
   @media (min-width: 45em) {
+    .line {
+      display: block;
+      position: relative;
+      height: 1px;
+      width: 100%;
+      margin-right: -2.5rem;
+      z-index: 2000;
+      background: hsl(var(--clr-white) / 0.25);
+    }
+
     .primary-navigation {
       margin-block: 2rem;
     }
