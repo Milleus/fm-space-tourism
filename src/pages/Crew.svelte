@@ -81,7 +81,6 @@
   }
 
   .grid-container--crew > .dots {
-    --gap: 2rem;
     grid-area: tabs;
   }
 

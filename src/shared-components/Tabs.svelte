@@ -57,7 +57,7 @@
       role="tab"
       tabindex={focusIndex === i ? 0 : -1}
       data-index={i}
-      class="uppercase ff-sans-cond text-accent letter-spacing-2"
+      class="uppercase text-accent ff-sans-cond letter-spacing-2"
       on:keydown={handleKeypress}
       on:click={handleClick}
     >

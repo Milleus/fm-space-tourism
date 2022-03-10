@@ -14,7 +14,7 @@
     >
       <img src="assets/shared/logo.svg" alt="space tourism logo" />
 
-      <h1 class="uppercase ff-sans-cond fs-500 text-accent letter-spacing-1">
+      <h1 class="uppercase text-accent ff-sans-cond fs-500 letter-spacing-1">
         Design system
       </h1>
     </div>

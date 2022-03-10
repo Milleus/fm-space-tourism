@@ -95,7 +95,6 @@
   }
 
   .grid-container--destination > .tabs {
-    --gap: 2rem;
     grid-area: tabs;
   }
 

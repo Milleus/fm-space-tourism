@@ -170,6 +170,10 @@ select {
       repeat(2, minmax(0, 40rem))
       minmax(1rem, 1fr);
   }
+
+  .grid-container p.text-accent {
+    line-height: 2;
+  }
 }
 
 .sr-only {

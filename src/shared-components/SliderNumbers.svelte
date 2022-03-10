@@ -53,7 +53,7 @@
       role="tab"
       tabindex={focusIndex === i ? 0 : -1}
       data-index={i}
-      class="ff-serif fs-600 text-white bg-dark"
+      class="ff-serif fs-600 text-white"
       on:keydown={handleKeypress}
       on:click={handleClick}
     >
@@ -64,17 +64,18 @@
 
 <style>
   .number-indicators {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .number-indicators > * {
     display: grid;
     place-items: center;
-    width: 5rem;
-    height: 5rem;
+    width: 2.5rem;
+    aspect-ratio: 1;
     cursor: pointer;
     border-radius: 50%;
     border: 1px solid hsl(var(--clr-white) / 0.25);
+    background-color: transparent;
   }
 
   .number-indicators > *:hover,
@@ -86,5 +87,21 @@
     background-color: hsl(var(--clr-white));
     border: 1px solid hsl(var(--clr-white));
     color: hsl(var(--clr-dark));
+  }
+
+  @media (min-width: 35em) {
+    .number-indicators > * {
+      width: 3.75rem;
+    }
+  }
+
+  @media (min-width: 45em) {
+    .number-indicators {
+      flex-direction: column;
+    }
+
+    .number-indicators > * {
+      width: clamp(3.75rem, 5vw, 5rem);
+    }
   }
 </style>

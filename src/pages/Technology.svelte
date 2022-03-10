@@ -1,0 +1,160 @@
+<script lang="ts">
+  import { data } from "../data";
+  import Header from "../components/Header.svelte";
+  import SliderNumbers from "../shared-components/SliderNumbers.svelte";
+
+  let tabIndex: number = 0;
+  let tech = data.technology[tabIndex];
+
+  const handleUpdate = (e: CustomEvent<{ index: number }>) => {
+    tabIndex = e.detail.index;
+    tech = data.technology[tabIndex];
+  };
+</script>
+
+<a class="skip-to-content" href="#main">Skip to content</a>
+
+<div class="technology">
+  <Header />
+
+  <main id="main" class="grid-container grid-container--technology">
+    <h1 class="numbered-title">
+      <span aria-hidden="true">03</span> Space Launch 101
+    </h1>
+
+    <div class="numbers">
+      <SliderNumbers
+        length={data.technology.length}
+        ariaLabel="technology list"
+        ariaControls="technology-tab"
+        activeIndex={tabIndex}
+        on:update={handleUpdate}
+      />
+    </div>
+
+    <article
+      id="technology-tab"
+      role="tabpanel"
+      tabindex={0}
+      class="technology-info flow"
+    >
+      <header class="flow">
+        <h2 class="uppercase text-accent ff-sans-cond fs-200 letter-spacing-3">
+          The terminology...
+        </h2>
+        <p class="uppercase ff-serif fs-700">{tech.name}</p>
+      </header>
+      <p class="text-accent">{tech.description}</p>
+    </article>
+
+    <picture>
+      <source srcset={tech.images.portrait} media="(min-width: 720px)" />
+      <img src={tech.images.landscape} alt={tech.name} />
+    </picture>
+  </main>
+</div>
+
+<style>
+  .technology {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    background-size: cover;
+    background-position: bottom center;
+    background-image: url("../assets/technology/background-technology-mobile.jpg");
+  }
+
+  .grid-container--technology {
+    padding-inline: 0;
+    grid-template-columns:
+      1rem
+      1fr
+      1rem;
+    grid-template-areas:
+      ". title ."
+      "image image image"
+      ". tabs ."
+      ". content .";
+  }
+
+  .grid-container--technology > .numbered-title {
+    grid-area: title;
+  }
+
+  .grid-container--technology > picture {
+    grid-area: image;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  .grid-container--technology > picture > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid-container--technology > .numbers {
+    grid-area: tabs;
+  }
+
+  .grid-container--technology > .technology-info {
+    align-self: start;
+    grid-area: content;
+  }
+
+  .technology-info header {
+    --flow-space: 0.5rem;
+  }
+
+  @media (min-width: 35em) {
+    .technology {
+      background-position: center center;
+      background-image: url("../assets/technology/background-technology-tablet.jpg");
+    }
+
+    .numbered-title {
+      justify-self: start;
+      margin-top: 2rem;
+    }
+
+    .grid-container--technology {
+      row-gap: 3.5rem;
+    }
+
+    .technology-info header {
+      --flow-space: 1rem;
+    }
+
+    .technology-info h2 {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 45em) {
+    .technology {
+      background-image: url("../assets/technology/background-technology-desktop.jpg");
+    }
+
+    .grid-container--technology {
+      row-gap: 1.5rem;
+      grid-template-columns:
+        minmax(1rem, 1fr)
+        minmax(0, 5rem)
+        minmax(0, 40rem)
+        minmax(0, 40rem);
+      grid-template-areas:
+        ". title title ."
+        ". tabs content image"
+        ". tabs content image";
+    }
+
+    .grid-container--technology > .technology-info {
+      align-self: center;
+      grid-area: content;
+    }
+
+    .grid-container--technology > .numbers {
+      justify-self: start;
+    }
+  }
+</style>
