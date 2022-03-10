@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "../shared-components/Button.svelte";
+  import Navigation from "../shared-components/Navigation.svelte";
   import SliderDots from "../shared-components/SliderDots.svelte";
   import SliderNumbers from "../shared-components/SliderNumbers.svelte";
   import Tabs from "../shared-components/Tabs.svelte";
@@ -156,17 +157,22 @@
         <span>03</span> Interactive elements
       </h2>
 
-      <!-- <div
-        class="grid"
-        style="place-items: center; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(81.5485px);"
-      >
+      <div class="grid">
+        <Navigation
+          items={[
+            { href: "#active", text: "Active" },
+            { href: "#hovered", text: "Hovered" },
+            { href: "#idle", text: "Idle" },
+          ]}
+          currentHref="#active"
+        />
       </div>
       <p
         class="text-accent ff-sans-normal fs-400"
         style="margin: 1.5rem 0 5rem; text-align: center;"
       >
         Different States of Navigation Bar
-      </p> -->
+      </p>
 
       <div class="flex">
         <div
