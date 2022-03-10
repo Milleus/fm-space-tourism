@@ -54,6 +54,7 @@
   }
 
   .primary-navigation a {
+    padding: var(--underline-gap, 1rem) 0;
     text-decoration: none;
   }
 
@@ -63,7 +64,6 @@
   }
 
   .underline-indicators > * {
-    cursor: pointer;
     padding: var(--underline-gap, 1rem) 0;
     border: 0;
     border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
