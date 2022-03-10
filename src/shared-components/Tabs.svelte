@@ -1,11 +1,12 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
 
-  export let items: Array<{ text: string }>;
-  export let ariaLabel: string = undefined;
+  export let items: Array<string>;
+  export let ariaLabel: string;
+  export let ariaControls: string;
   export let activeIndex: number = 0;
 
-  let focusIndex: number = 0;
+  let focusIndex: number = activeIndex;
   const dispatch = createEventDispatcher<{ update: { index: number } }>();
 
   const handleKeypress = (e: KeyboardEvent) => {
@@ -36,9 +37,11 @@
   };
 
   const handleClick = (e: MouseEvent) => {
-    const index = (e.target as HTMLButtonElement).getAttribute("data-index");
+    const tab = e.target as HTMLButtonElement;
+    const index = Number(tab.getAttribute("data-index"));
 
-    dispatch("update", { index: Number(index) });
+    focusIndex = index;
+    dispatch("update", { index });
   };
 </script>
 
@@ -50,6 +53,7 @@
   {#each items as item, i}
     <button
       aria-selected={activeIndex === i}
+      aria-controls={ariaControls}
       role="tab"
       tabindex={focusIndex === i ? 0 : -1}
       data-index={i}
@@ -57,7 +61,7 @@
       on:keydown={handleKeypress}
       on:click={handleClick}
     >
-      {item.text}
+      {item}
     </button>
   {/each}
 </div>

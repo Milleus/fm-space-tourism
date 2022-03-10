@@ -7,7 +7,7 @@
   let destination = data.destinations[tabIndex];
 
   const items = data.destinations.map((destination) => {
-    return { text: destination.name };
+    return destination.name;
   });
 
   const handleUpdate = (e: CustomEvent<{ index: number }>) => {
@@ -35,12 +35,18 @@
       <Tabs
         {items}
         ariaLabel="destination list"
+        ariaControls="destination-tab"
         activeIndex={tabIndex}
         on:update={handleUpdate}
       />
     </div>
 
-    <article role="tabpanel" tabindex={0} class="destination-info flow">
+    <article
+      id="destination-tab"
+      role="tabpanel"
+      tabindex={0}
+      class="destination-info flow"
+    >
       <h2 class="uppercase ff-serif fs-800">{destination.name}</h2>
 
       <p class="text-accent">{destination.description}</p>
@@ -85,6 +91,7 @@
   .grid-container--destination > picture {
     grid-area: image;
     max-width: 60%;
+    align-self: start;
   }
 
   .grid-container--destination > .tabs {
@@ -138,7 +145,7 @@
         ". image content .";
     }
 
-    .grid-container--destination picture {
+    .grid-container--destination > picture {
       max-width: 90%;
     }
 

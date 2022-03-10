@@ -7,12 +7,19 @@
 </script>
 
 <main>
-  <div class="container">
-    <h1 class="uppercase ff-sans-cond fs-500 text-accent letter-spacing-1">
-      Design system
-    </h1>
+  <div class="container flow" style="--flow-space: 4rem; padding-block: 4rem;">
+    <div
+      class="flex"
+      style="justify-content: space-between; align-items: center;"
+    >
+      <img src="assets/shared/logo.svg" alt="space tourism logo" />
 
-    <section id="colors" style="margin: 4rem 0 8rem;">
+      <h1 class="uppercase ff-sans-cond fs-500 text-accent letter-spacing-1">
+        Design system
+      </h1>
+    </div>
+
+    <section id="colors">
       <h2 class="numbered-title" style="margin-bottom: 3rem;">
         <span>01</span> Colors
       </h2>
@@ -64,7 +71,7 @@
       </div>
     </section>
 
-    <section id="typography" style="margin: 4rem 0 8rem;">
+    <section id="typography">
       <h2 class="numbered-title" style="margin-bottom: 3rem;">
         <span>02</span> Typography
       </h2>
@@ -152,7 +159,7 @@
       </div>
     </section>
 
-    <section id="interactive-elements" style="margin: 4rem 0 8rem;">
+    <section id="interactive-elements">
       <h2 class="numbered-title" style="margin-bottom: 3rem;">
         <span>03</span> Interactive elements
       </h2>
@@ -192,11 +199,9 @@
 
         <div class="grid" style="flex-basis: 100%; place-items: center;">
           <Tabs
-            tabs={[
-              { text: "Moon", isActive: true },
-              { text: "Mars" },
-              { text: "Europa" },
-            ]}
+            items={["Active", "Hovered", "Idle"]}
+            ariaLabel="description of list"
+            ariaControls="tabpanel-id"
           />
           <p
             class="text-accent ff-sans-normal fs-400"
@@ -206,11 +211,9 @@
           </p>
 
           <SliderDots
-            dots={[
-              { srText: "Moon", isActive: true },
-              { srText: "Mars" },
-              { srText: "Europa" },
-            ]}
+            items={["Active", "Hovered", "Idle"]}
+            ariaLabel="description of list"
+            ariaControls="tabpanel-id"
           />
           <p
             class="text-accent ff-sans-normal fs-400"
