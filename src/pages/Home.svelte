@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+  import { PageUrls } from "../App.svelte";
   import Button from "../shared-components/Button.svelte";
   import Header from "../components/Header.svelte";
 </script>
@@ -26,7 +27,7 @@
     </div>
 
     <div>
-      <Button href="#">Explore</Button>
+      <Button href={`#${PageUrls.DESTINATION}`}>Explore</Button>
     </div>
   </main>
 </div>
