@@ -1,13 +1,7 @@
 <script>
-  import { PageUrls } from "../App.svelte";
-
-  import Header from "../components/Header.svelte";
   import Button from "../shared-components/Button.svelte";
+  import Header from "../components/Header.svelte";
 </script>
-
-<svelte:head>
-  <title>Frontend Mentor | Space tourism website</title>
-</svelte:head>
 
 <a class="skip-to-content" href="#main">Skip to content</a>
 

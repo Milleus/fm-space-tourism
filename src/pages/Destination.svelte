@@ -1,11 +1,20 @@
-<script>
+<script lang="ts">
+  import { data } from "../data";
   import Header from "../components/Header.svelte";
   import Tabs from "../shared-components/Tabs.svelte";
-</script>
 
-<svelte:head>
-  <title>Frontend Mentor | Space tourism website</title>
-</svelte:head>
+  let tabIndex: number = 0;
+  let destination = data.destinations[tabIndex];
+
+  const items = data.destinations.map((destination) => {
+    return { text: destination.name };
+  });
+
+  const handleUpdate = (e: CustomEvent<{ index: number }>) => {
+    tabIndex = e.detail.index;
+    destination = data.destinations[tabIndex];
+  };
+</script>
 
 <a class="skip-to-content" href="#main">Skip to content</a>
 
@@ -17,37 +26,33 @@
       <span aria-hidden="true">01</span> Pick your destination
     </h1>
 
-    <img src="assets/destination/image-moon.png" alt="the moon" />
+    <picture>
+      <source srcset={destination.images.webp} type="image/webp" />
+      <img src={destination.images.png} alt={destination.images.alt} />
+    </picture>
 
     <div class="tabs">
       <Tabs
-        tabs={[
-          { text: "Moon", isActive: true },
-          { text: "Mars" },
-          { text: "Europa" },
-          { text: "Titan" },
-        ]}
+        {items}
+        ariaLabel="destination list"
+        activeIndex={tabIndex}
+        on:update={handleUpdate}
       />
     </div>
 
-    <article class="destination-info">
-      <h2 class="uppercase ff-serif fs-800">Moon</h2>
+    <article role="tabpanel" tabindex={0} class="destination-info flow">
+      <h2 class="uppercase ff-serif fs-800">{destination.name}</h2>
 
-      <p class="text-accent">
-        See our planet as you’ve never seen it before. A perfect relaxing trip
-        away to help regain perspective and come back refreshed. While you’re
-        there, take in some history by visiting the Luna 2 and Apollo 11 landing
-        sites.
-      </p>
+      <p class="text-accent">{destination.description}</p>
 
       <div class="destination-meta flex">
         <div>
           <h3 class="uppercase text-accent fs-200">Avg. distance</h3>
-          <p class="uppercase ff-serif">384,400 km</p>
+          <p class="uppercase ff-serif">{destination.distance}</p>
         </div>
         <div>
           <h3 class="uppercase text-accent fs-200">Est. travel time</h3>
-          <p class="uppercase ff-serif">3 days</p>
+          <p class="uppercase ff-serif">{destination.travel}</p>
         </div>
       </div>
     </article>
@@ -61,6 +66,7 @@
     grid-template-rows: min-content 1fr;
     background-size: cover;
     background-position: bottom center;
+    background-image: url("../assets/destination/background-destination-mobile.jpg");
   }
 
   .grid-container--destination {
@@ -76,7 +82,7 @@
     grid-area: title;
   }
 
-  .grid-container--destination > img {
+  .grid-container--destination > picture {
     grid-area: image;
     max-width: 60%;
   }
@@ -102,6 +108,11 @@
   }
 
   @media (min-width: 35em) {
+    .destination {
+      background-position: center center;
+      background-image: url("../assets/destination/background-destination-tablet.jpg");
+    }
+
     .numbered-title {
       justify-self: start;
       margin-top: 2rem;
@@ -114,6 +125,10 @@
   }
 
   @media (min-width: 45em) {
+    .destination {
+      background-image: url("../assets/destination/background-destination-desktop.jpg");
+    }
+
     .grid-container--destination {
       justify-items: start;
       align-content: start;
@@ -123,7 +138,7 @@
         ". image content .";
     }
 
-    .grid-container--destination > img {
+    .grid-container--destination picture {
       max-width: 90%;
     }
 

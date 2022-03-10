@@ -1,9 +1,10 @@
 <script lang="ts">
   export let items: Array<{ href: string; text: string }>;
   export let currentHref: string;
+
   let isMenuOpen: boolean = false;
 
-  const toggleMenu = (): void => {
+  const handleClick = () => {
     isMenuOpen = !isMenuOpen;
   };
 </script>
@@ -12,7 +13,7 @@
   class="mobile-nav-toggle"
   aria-controls="primary-navigation"
   aria-expanded={isMenuOpen}
-  on:click={toggleMenu}
+  on:click={handleClick}
 >
   <span class="sr-only">Menu</span>
 </button>
@@ -26,7 +27,6 @@
     {#each items as item, i}
       {@const active = currentHref === item.href}
       {@const displayNumber = i < 10 ? `0${i}` : `${i}`}
-
       <li class:active>
         <a
           class="uppercase ff-sans-cond text-white letter-spacing-2"
