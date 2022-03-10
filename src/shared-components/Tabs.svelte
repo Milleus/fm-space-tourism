@@ -4,7 +4,7 @@
   export let items: Array<string>;
   export let ariaLabel: string;
   export let ariaControls: string;
-  export let activeIndex: number = 0;
+  export let activeIndex: number;
 
   let focusIndex: number = activeIndex;
   const dispatch = createEventDispatcher<{ update: { index: number } }>();

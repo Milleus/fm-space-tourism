@@ -202,6 +202,7 @@
             items={["Active", "Hovered", "Idle"]}
             ariaLabel="description of list"
             ariaControls="tabpanel-id"
+            activeIndex={0}
           />
           <p
             class="text-accent ff-sans-normal fs-400"
@@ -214,6 +215,7 @@
             items={["Active", "Hovered", "Idle"]}
             ariaLabel="description of list"
             ariaControls="tabpanel-id"
+            activeIndex={0}
           />
           <p
             class="text-accent ff-sans-normal fs-400"
@@ -222,7 +224,12 @@
             Slider 1 States (Active, Hover, & Idle)
           </p>
 
-          <SliderNumbers length={3} activeIndex={0} />
+          <SliderNumbers
+            length={3}
+            ariaLabel="description of list"
+            ariaControls="tabpanel-id"
+            activeIndex={0}
+          />
           <p
             class="text-accent ff-sans-normal fs-400"
             style="margin: 1.5rem 0 4rem;"
