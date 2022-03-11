@@ -85,14 +85,6 @@
 
   .grid-container--technology > picture {
     grid-area: image;
-    justify-self: stretch;
-    align-self: stretch;
-  }
-
-  .grid-container--technology > picture > img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
   }
 
   .grid-container--technology > .numbers {
@@ -138,16 +130,18 @@
     }
 
     .grid-container--technology {
+      justify-items: start;
+      align-content: start;
       row-gap: 1.5rem;
       grid-template-columns:
-        minmax(1rem, 1fr)
-        minmax(0, 5rem)
-        minmax(0, 40rem)
-        minmax(0, 40rem);
+        minmax(2rem, 1fr)
+        minmax(0, 7rem)
+        minmax(0, 41rem)
+        minmax(0, 32rem)
+        minmax(2rem, 1fr);
       grid-template-areas:
-        ". title title ."
-        ". tabs content image"
-        ". tabs content image";
+        ". title title title ."
+        ". tabs content image .";
     }
 
     .grid-container--technology > .technology-info {
