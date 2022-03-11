@@ -188,21 +188,6 @@ select {
   border: 0;
 }
 
-.skip-to-content {
-  position: absolute;
-  z-index: 9999;
-  background: hsl(var(--clr-white));
-  color: hsl(var(--clr-dark));
-  padding: 0.5em 1em;
-  margin-inline: auto;
-  transform: translateY(-100%);
-  transition: transform 250ms ease-in;
-}
-
-.skip-to-content:focus {
-  transform: translateY(0);
-}
-
 .box {
   background: lightblue;
   padding: 3rem;

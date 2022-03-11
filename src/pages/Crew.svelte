@@ -16,12 +16,14 @@
   };
 </script>
 
-<a class="skip-to-content" href="#main">Skip to content</a>
-
 <div class="crew">
   <Header />
 
-  <main id="main" class="grid-container grid-container--crew flow">
+  <main
+    id="main"
+    class="grid-container grid-container--crew flow"
+    tabindex="-1"
+  >
     <h1 class="numbered-title">
       <span aria-hidden="true">02</span> Meet your crew
     </h1>

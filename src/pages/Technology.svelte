@@ -12,12 +12,14 @@
   };
 </script>
 
-<a class="skip-to-content" href="#main">Skip to content</a>
-
 <div class="technology">
   <Header />
 
-  <main id="main" class="grid-container grid-container--technology">
+  <main
+    id="main"
+    class="grid-container grid-container--technology"
+    tabindex="-1"
+  >
     <h1 class="numbered-title">
       <span aria-hidden="true">03</span> Space Launch 101
     </h1>

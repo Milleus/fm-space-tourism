@@ -4,12 +4,10 @@
   import Header from "../components/Header.svelte";
 </script>
 
-<a class="skip-to-content" href="#main">Skip to content</a>
-
 <div class="home">
   <Header />
 
-  <main id="main" class="grid-container grid-container--home">
+  <main id="main" class="grid-container grid-container--home" tabindex="-1">
     <div>
       <h1 class="uppercase text-accent ff-sans-cond fs-500 letter-spacing-1">
         So, you want to travel to <span

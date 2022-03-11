@@ -16,12 +16,14 @@
   };
 </script>
 
-<a class="skip-to-content" href="#main">Skip to content</a>
-
 <div class="destination">
   <Header />
 
-  <main id="main" class="grid-container grid-container--destination flow">
+  <main
+    id="main"
+    class="grid-container grid-container--destination flow"
+    tabindex="-1"
+  >
     <h1 class="numbered-title">
       <span aria-hidden="true">01</span> Pick your destination
     </h1>
