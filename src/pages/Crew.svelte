@@ -4,15 +4,15 @@
   import SliderDots from "../shared-components/SliderDots.svelte";
 
   let tabIndex: number = 0;
-  let member = data.crew[tabIndex];
+  let crewMember = data.crew[tabIndex];
 
-  const items = data.crew.map((member) => {
-    return `The ${member.role}`;
+  const items = data.crew.map((crewMember) => {
+    return `The ${crewMember.role}`;
   });
 
   const handleUpdate = (e: CustomEvent<{ index: number }>) => {
     tabIndex = e.detail.index;
-    member = data.crew[tabIndex];
+    crewMember = data.crew[tabIndex];
   };
 </script>
 
@@ -40,15 +40,15 @@
 
     <article id="crew-tab" role="tabpanel" tabindex={0} class="crew-info flow">
       <header class="flow">
-        <h2 class="uppercase ff-serif fs-600">{member.role}</h2>
-        <p class="uppercase ff-serif fs-700">{member.name}</p>
+        <h2 class="uppercase ff-serif fs-600">{crewMember.role}</h2>
+        <p class="uppercase ff-serif fs-700">{crewMember.name}</p>
       </header>
-      <p class="text-accent">{member.bio}</p>
+      <p class="text-accent">{crewMember.bio}</p>
     </article>
 
     <picture>
-      <source srcset={member.images.webp} type="image/webp" />
-      <img src={member.images.png} alt={member.name} />
+      <source srcset={crewMember.images.webp} type="image/webp" />
+      <img src={crewMember.images.png} alt={crewMember.name} />
     </picture>
   </main>
 </div>
