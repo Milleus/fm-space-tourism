@@ -68,13 +68,11 @@
   }
 
   .number-indicators > * {
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    aspect-ratio: 1;
     cursor: pointer;
-    border-radius: 50%;
     border: 1px solid hsl(var(--clr-white) / 0.25);
+    border-radius: 50%;
+    aspect-ratio: 1;
+    padding: 0.5rem;
     background-color: transparent;
   }
 

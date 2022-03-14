@@ -17,7 +17,7 @@
 
   <main
     id="main"
-    class="grid-container grid-container--technology"
+    class="grid-container grid-container--technology flow"
     tabindex="-1"
   >
     <h1 class="numbered-title">
@@ -68,6 +68,7 @@
 
   .grid-container--technology {
     padding-inline: 0;
+    --flow-space: 2rem;
     grid-template-columns:
       1rem
       1fr
@@ -85,6 +86,7 @@
 
   .grid-container--technology > picture {
     grid-area: image;
+    max-width: 100%;
   }
 
   .grid-container--technology > .numbers {
@@ -92,7 +94,6 @@
   }
 
   .grid-container--technology > .technology-info {
-    align-self: start;
     grid-area: content;
   }
 
@@ -111,10 +112,6 @@
       margin-top: 2rem;
     }
 
-    .grid-container--technology {
-      row-gap: 3.5rem;
-    }
-
     .technology-info header {
       --flow-space: 1rem;
     }
@@ -130,9 +127,9 @@
     }
 
     .grid-container--technology {
+      --flow-space: 1.5rem;
       justify-items: start;
       align-content: start;
-      row-gap: 1.5rem;
       grid-template-columns:
         minmax(2rem, 1fr)
         minmax(0, 7rem)
@@ -141,7 +138,7 @@
         minmax(2rem, 1fr);
       grid-template-areas:
         ". title title title ."
-        ". tabs content image .";
+        ". tabs content image image";
     }
 
     .grid-container--technology > .technology-info {
