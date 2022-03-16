@@ -40,6 +40,10 @@
     background-image: url("../assets/home/background-home-mobile.jpg");
   }
 
+  .grid-container--home {
+    outline: none;
+  }
+
   @media (min-width: 35em) {
     .home {
       background-position: center center;

@@ -67,8 +67,9 @@
   }
 
   .grid-container--technology {
-    padding-inline: 0;
     --flow-space: 2rem;
+    outline: none;
+    padding-inline: 0;
     grid-template-columns:
       1rem
       1fr
@@ -86,7 +87,6 @@
 
   .grid-container--technology > picture {
     grid-area: image;
-    max-width: 100%;
   }
 
   .grid-container--technology > .numbers {

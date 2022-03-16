@@ -79,6 +79,7 @@
 
   .grid-container--destination {
     --flow-space: 2rem;
+    outline: none;
     grid-template-areas:
       "title"
       "image"
