@@ -199,9 +199,9 @@
 
         <div class="grid" style="flex-basis: 100%; place-items: center;">
           <Tabs
-            items={["Active", "Hovered", "Idle"]}
+            names={["Active", "Hovered", "Idle"]}
             ariaLabel="description of list"
-            ariaControls="tabpanel-id"
+            ariaControlsPrefix="tabpanel"
             activeIndex={0}
           />
           <p

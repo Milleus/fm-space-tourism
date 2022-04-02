@@ -4,15 +4,14 @@
   import Tabs from "../shared-components/Tabs.svelte";
 
   let tabIndex: number = 0;
-  let destination = data.destinations[tabIndex];
+  let destinations = data.destinations;
 
-  const items = data.destinations.map((destination) => {
+  const tabNames = destinations.map((destination) => {
     return destination.name;
   });
 
   const handleUpdate = (e: CustomEvent<{ index: number }>) => {
     tabIndex = e.detail.index;
-    destination = data.destinations[tabIndex];
   };
 </script>
 
@@ -24,42 +23,47 @@
       <span aria-hidden="true">01</span> Pick your destination
     </h1>
 
-    <picture>
-      <source srcset={destination.images.webp} type="image/webp" />
-      <img src={destination.images.png} alt={destination.images.alt} />
-    </picture>
+    {#each destinations as destination, i}
+      <picture data-visible={i === tabIndex}>
+        <source srcset={destination.images.webp} type="image/webp" />
+        <img src={destination.images.png} alt={destination.images.alt} />
+      </picture>
+    {/each}
 
     <div class="tabs">
       <Tabs
-        {items}
+        names={tabNames}
         ariaLabel="destination list"
-        ariaControls="destination-tab"
+        ariaControlsPrefix="destination"
         activeIndex={tabIndex}
         on:update={handleUpdate}
       />
     </div>
 
-    <article
-      id="destination-tab"
-      role="tabpanel"
-      tabindex={0}
-      class="destination-info flow"
-    >
-      <h2 class="uppercase ff-serif fs-800">{destination.name}</h2>
+    {#each destinations as destination, i}
+      <article
+        id={`destination-${i}`}
+        role="tabpanel"
+        tabindex={tabIndex === i ? 0 : -1}
+        data-visible={i === tabIndex}
+        class="destination-info flow"
+      >
+        <h2 class="uppercase ff-serif fs-800">{destination.name}</h2>
 
-      <p class="text-accent">{destination.description}</p>
+        <p class="text-accent">{destination.description}</p>
 
-      <div class="destination-meta flex">
-        <div>
-          <h3 class="uppercase text-accent fs-200">Avg. distance</h3>
-          <p class="uppercase ff-serif">{destination.distance}</p>
+        <div class="destination-meta flex">
+          <div>
+            <h3 class="uppercase text-accent fs-200">Avg. distance</h3>
+            <p class="uppercase ff-serif">{destination.distance}</p>
+          </div>
+          <div>
+            <h3 class="uppercase text-accent fs-200">Est. travel time</h3>
+            <p class="uppercase ff-serif">{destination.travel}</p>
+          </div>
         </div>
-        <div>
-          <h3 class="uppercase text-accent fs-200">Est. travel time</h3>
-          <p class="uppercase ff-serif">{destination.travel}</p>
-        </div>
-      </div>
-    </article>
+      </article>
+    {/each}
   </main>
 </div>
 
@@ -90,6 +94,28 @@
     grid-area: image;
     max-width: 60%;
     align-self: start;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 600ms linear, visibility 0ms linear 600ms;
+  }
+
+  .grid-container--destination > picture[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 600ms linear, visibility 0ms linear 0ms;
+  }
+
+  .grid-container--destination > picture img {
+    animation: rotate 180s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   .grid-container--destination > .tabs {
@@ -98,6 +124,15 @@
 
   .grid-container--destination > .destination-info {
     grid-area: content;
+    align-self: start;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms linear 0ms, visibility 0ms linear 300ms;
+  }
+  .grid-container--destination > .destination-info[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms linear 300ms, visibility 0ms linear 0ms;
   }
 
   .destination-meta {
