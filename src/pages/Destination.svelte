@@ -3,8 +3,8 @@
   import Header from "../components/Header.svelte";
   import Tabs from "../shared-components/Tabs.svelte";
 
+  const { destinations } = data;
   let tabIndex: number = 0;
-  let destinations = data.destinations;
 
   const tabNames = destinations.map((destination) => {
     return destination.name;

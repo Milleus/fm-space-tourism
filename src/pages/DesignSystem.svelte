@@ -212,9 +212,9 @@
           </p>
 
           <SliderDots
-            items={["Active", "Hovered", "Idle"]}
+            names={["Active", "Hovered", "Idle"]}
             ariaLabel="description of list"
-            ariaControls="tabpanel-id"
+            ariaControlsPrefix="tabpanel"
             activeIndex={0}
           />
           <p

@@ -3,16 +3,15 @@
   import Header from "../components/Header.svelte";
   import SliderDots from "../shared-components/SliderDots.svelte";
 
+  const { crew } = data;
   let tabIndex: number = 0;
-  let crewMember = data.crew[tabIndex];
 
-  const items = data.crew.map((crewMember) => {
+  const tabNames = crew.map((crewMember) => {
     return `The ${crewMember.role}`;
   });
 
   const handleUpdate = (e: CustomEvent<{ index: number }>) => {
     tabIndex = e.detail.index;
-    crewMember = data.crew[tabIndex];
   };
 </script>
 
@@ -26,26 +25,36 @@
 
     <div class="dots">
       <SliderDots
-        {items}
+        names={tabNames}
         ariaLabel="crew member list"
-        ariaControls="crew-tab"
+        ariaControlsPrefix="crew"
         activeIndex={tabIndex}
         on:update={handleUpdate}
       />
     </div>
 
-    <article id="crew-tab" role="tabpanel" tabindex={0} class="crew-info flow">
-      <header class="flow">
-        <h2 class="uppercase ff-serif fs-600">{crewMember.role}</h2>
-        <p class="uppercase ff-serif fs-700">{crewMember.name}</p>
-      </header>
-      <p class="text-accent">{crewMember.bio}</p>
-    </article>
+    {#each crew as crewMember, i}
+      <article
+        id={`crew-${i}`}
+        role="tabpanel"
+        tabindex={tabIndex === i ? 0 : -1}
+        data-visible={i === tabIndex}
+        class="crew-info flow"
+      >
+        <header class="flow">
+          <h2 class="uppercase ff-serif fs-600">{crewMember.role}</h2>
+          <p class="uppercase ff-serif fs-700">{crewMember.name}</p>
+        </header>
+        <p class="text-accent">{crewMember.bio}</p>
+      </article>
+    {/each}
 
-    <picture>
-      <source srcset={crewMember.images.webp} type="image/webp" />
-      <img src={crewMember.images.png} alt={crewMember.name} />
-    </picture>
+    {#each crew as crewMember, i}
+      <picture data-visible={i === tabIndex}>
+        <source srcset={crewMember.images.webp} type="image/webp" />
+        <img src={crewMember.images.png} alt={crewMember.name} />
+      </picture>
+    {/each}
   </main>
 </div>
 
@@ -76,6 +85,15 @@
     grid-area: image;
     max-width: 60%;
     border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms linear 0ms, visibility 0ms linear 300ms;
+  }
+
+  .grid-container--crew > picture[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms linear 300ms, visibility 0ms linear 0ms;
   }
 
   .grid-container--crew > .dots {
@@ -84,6 +102,15 @@
 
   .grid-container--crew > .crew-info {
     grid-area: content;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms linear 0ms, visibility 0ms linear 300ms;
+  }
+
+  .grid-container--crew > .crew-info[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms linear 300ms, visibility 0ms linear 0ms;
   }
 
   .crew-info h2 {

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
 
-  export let items: Array<string>;
+  export let names: Array<string>;
   export let ariaLabel: string;
-  export let ariaControls: string;
+  export let ariaControlsPrefix: string;
   export let activeIndex: number;
 
   let focusIndex: number = activeIndex;
@@ -46,10 +46,10 @@
 </script>
 
 <div role="tablist" aria-label={ariaLabel} class="dot-indicators flex">
-  {#each items as item, i}
+  {#each names as item, i}
     <button
       aria-selected={activeIndex === i}
-      aria-controls={ariaControls}
+      aria-controls={`${ariaControlsPrefix}-${i}`}
       role="tab"
       tabindex={focusIndex === i ? 0 : -1}
       data-index={i}
