@@ -19,11 +19,7 @@
 <div class="destination">
   <Header />
 
-  <main
-    id="main"
-    class="grid-container grid-container--destination flow"
-    tabindex="-1"
-  >
+  <main id="main" class="grid-container grid-container--destination flow">
     <h1 class="numbered-title">
       <span aria-hidden="true">01</span> Pick your destination
     </h1>
@@ -79,7 +75,6 @@
 
   .grid-container--destination {
     --flow-space: 2rem;
-    outline: none;
     grid-template-areas:
       "title"
       "image"

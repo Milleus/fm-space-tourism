@@ -15,11 +15,7 @@
 <div class="technology">
   <Header />
 
-  <main
-    id="main"
-    class="grid-container grid-container--technology flow"
-    tabindex="-1"
-  >
+  <main id="main" class="grid-container grid-container--technology flow">
     <h1 class="numbered-title">
       <span aria-hidden="true">03</span> Space Launch 101
     </h1>
@@ -68,7 +64,6 @@
 
   .grid-container--technology {
     --flow-space: 2rem;
-    outline: none;
     padding-inline: 0;
     grid-template-columns:
       1rem

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { PageUrls } from "../App.svelte";
+  import { Paths } from "../App.svelte";
   import Button from "../shared-components/Button.svelte";
   import Header from "../components/Header.svelte";
 </script>
@@ -7,7 +7,7 @@
 <div class="home">
   <Header />
 
-  <main id="main" class="grid-container grid-container--home" tabindex="-1">
+  <main id="main" class="grid-container grid-container--home">
     <div>
       <h1 class="uppercase text-accent ff-sans-cond fs-500 letter-spacing-1">
         So, you want to travel to <span
@@ -25,7 +25,7 @@
     </div>
 
     <div>
-      <Button href={`#${PageUrls.DESTINATION}`}>Explore</Button>
+      <Button href={Paths.DESTINATION}>Explore</Button>
     </div>
   </main>
 </div>
@@ -38,10 +38,6 @@
     background-size: cover;
     background-position: bottom center;
     background-image: url("../assets/home/background-home-mobile.jpg");
-  }
-
-  .grid-container--home {
-    outline: none;
   }
 
   @media (min-width: 35em) {

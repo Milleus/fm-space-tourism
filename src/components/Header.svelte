@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { PageUrls } from "../App.svelte";
+  import { Paths } from "../App.svelte";
   import Navigation from "../shared-components/Navigation.svelte";
-
-  const getCurrentHref = (): string => {
-    const { hash } = window.location;
-    return hash ? hash : `#${PageUrls.HOME}`;
-  };
 </script>
 
 <header class="primary-header flex">
+  <a class="skip-to-content" href="#main">Skip to content</a>
+
   <div>
     <img class="logo" src="assets/shared/logo.svg" alt="space tourism logo" />
   </div>
@@ -17,12 +14,12 @@
 
   <Navigation
     items={[
-      { href: `#${PageUrls.HOME}`, text: "Home" },
-      { href: `#${PageUrls.DESTINATION}`, text: "Destination" },
-      { href: `#${PageUrls.CREW}`, text: "Crew" },
-      { href: `#${PageUrls.TECHNOLOGY}`, text: "Technology" },
+      { href: Paths.HOME, text: "Home" },
+      { href: Paths.DESTINATION, text: "Destination" },
+      { href: Paths.CREW, text: "Crew" },
+      { href: Paths.TECHNOLOGY, text: "Technology" },
     ]}
-    currentHref={getCurrentHref()}
+    currentHref={window.location.pathname}
   />
 </header>
 
@@ -30,6 +27,23 @@
   .primary-header {
     justify-content: space-between;
     align-items: center;
+  }
+
+  .skip-to-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: hsl(var(--clr-white));
+    color: hsl(var(--clr-dark));
+    padding: 0.5em 1em;
+    margin-inline: auto;
+    transform: translateY(-100%);
+    transition: transform 250ms ease-in;
+  }
+
+  .skip-to-content:focus {
+    transform: translateY(0);
   }
 
   .logo {
