@@ -3,7 +3,7 @@
 
   export let length: number;
   export let ariaLabel: string;
-  export let ariaControls: string;
+  export let ariaControlsPrefix: string;
   export let activeIndex: number;
 
   let focusIndex: number = activeIndex;
@@ -49,7 +49,7 @@
   {#each Array(length) as _, i}
     <button
       aria-selected={activeIndex === i}
-      aria-controls={ariaControls}
+      aria-controls={`${ariaControlsPrefix}-${i}`}
       role="tab"
       tabindex={focusIndex === i ? 0 : -1}
       data-index={i}
@@ -72,6 +72,7 @@
     border: 1px solid hsl(var(--clr-white) / 0.25);
     border-radius: 50%;
     aspect-ratio: 1;
+    width: 2.5rem;
     padding: 0.5rem;
     background-color: transparent;
   }

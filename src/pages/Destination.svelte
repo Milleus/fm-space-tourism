@@ -4,6 +4,7 @@
   import Tabs from "../shared-components/Tabs.svelte";
 
   const { destinations } = data;
+  const panelPrefix = "destination";
   let tabIndex: number = 0;
 
   const tabNames = destinations.map((destination) => {
@@ -34,7 +35,7 @@
       <Tabs
         names={tabNames}
         ariaLabel="destination list"
-        ariaControlsPrefix="destination"
+        ariaControlsPrefix={panelPrefix}
         activeIndex={tabIndex}
         on:update={handleUpdate}
       />
@@ -42,7 +43,7 @@
 
     {#each destinations as destination, i}
       <article
-        id={`destination-${i}`}
+        id={`${panelPrefix}-${i}`}
         role="tabpanel"
         tabindex={tabIndex === i ? 0 : -1}
         data-visible={i === tabIndex}
@@ -96,13 +97,13 @@
     align-self: start;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 600ms linear, visibility 0ms linear 600ms;
+    transition: opacity 600ms linear 0ms, visibility 0ms linear 600ms;
   }
 
   .grid-container--destination > picture[data-visible="true"] {
     opacity: 1;
     visibility: visible;
-    transition: opacity 600ms linear, visibility 0ms linear 0ms;
+    transition: opacity 600ms linear 0ms, visibility 0ms linear 0ms;
   }
 
   .grid-container--destination > picture img {

@@ -4,6 +4,7 @@
   import SliderDots from "../shared-components/SliderDots.svelte";
 
   const { crew } = data;
+  const panelPrefix = "crew";
   let tabIndex: number = 0;
 
   const tabNames = crew.map((crewMember) => {
@@ -27,7 +28,7 @@
       <SliderDots
         names={tabNames}
         ariaLabel="crew member list"
-        ariaControlsPrefix="crew"
+        ariaControlsPrefix={panelPrefix}
         activeIndex={tabIndex}
         on:update={handleUpdate}
       />
@@ -35,7 +36,7 @@
 
     {#each crew as crewMember, i}
       <article
-        id={`crew-${i}`}
+        id={`${panelPrefix}-${i}`}
         role="tabpanel"
         tabindex={tabIndex === i ? 0 : -1}
         data-visible={i === tabIndex}

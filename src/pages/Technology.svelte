@@ -3,12 +3,12 @@
   import Header from "../components/Header.svelte";
   import SliderNumbers from "../shared-components/SliderNumbers.svelte";
 
+  const { technology } = data;
+  const panelPrefix = "technology";
   let tabIndex: number = 0;
-  let tech = data.technology[tabIndex];
 
   const handleUpdate = (e: CustomEvent<{ index: number }>) => {
     tabIndex = e.detail.index;
-    tech = data.technology[tabIndex];
   };
 </script>
 
@@ -24,31 +24,38 @@
       <SliderNumbers
         length={data.technology.length}
         ariaLabel="technology list"
-        ariaControls="technology-tab"
+        ariaControlsPrefix={panelPrefix}
         activeIndex={tabIndex}
         on:update={handleUpdate}
       />
     </div>
 
-    <article
-      id="technology-tab"
-      role="tabpanel"
-      tabindex={0}
-      class="technology-info flow"
-    >
-      <header class="flow">
-        <h2 class="uppercase text-accent ff-sans-cond fs-200 letter-spacing-3">
-          The terminology...
-        </h2>
-        <p class="uppercase ff-serif fs-700">{tech.name}</p>
-      </header>
-      <p class="text-accent">{tech.description}</p>
-    </article>
+    {#each technology as tech, i}
+      <article
+        id={`${panelPrefix}-${i}`}
+        role="tabpanel"
+        tabindex={tabIndex === i ? 0 : -1}
+        data-visible={i === tabIndex}
+        class="technology-info flow"
+      >
+        <header class="flow">
+          <h2
+            class="uppercase text-accent ff-sans-cond fs-200 letter-spacing-3"
+          >
+            The terminology...
+          </h2>
+          <p class="uppercase ff-serif fs-700">{tech.name}</p>
+        </header>
+        <p class="text-accent">{tech.description}</p>
+      </article>
+    {/each}
 
-    <picture>
-      <source srcset={tech.images.portrait} media="(min-width: 720px)" />
-      <img src={tech.images.landscape} alt={tech.name} />
-    </picture>
+    {#each technology as tech, i}
+      <picture data-visible={i === tabIndex}>
+        <source srcset={tech.images.portrait} media="(min-width: 720px)" />
+        <img src={tech.images.landscape} alt={tech.name} />
+      </picture>
+    {/each}
   </main>
 </div>
 
@@ -82,6 +89,15 @@
 
   .grid-container--technology > picture {
     grid-area: image;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms linear 0ms, visibility 0ms linear 300ms;
+  }
+
+  .grid-container--technology > picture[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms linear 300ms, visibility 0ms linear 0ms;
   }
 
   .grid-container--technology > .numbers {
@@ -90,6 +106,16 @@
 
   .grid-container--technology > .technology-info {
     grid-area: content;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms linear 0ms, visibility 0ms linear 300ms;
+  }
+
+  .grid-container--technology > .technology-info[data-visible="true"] {
+    grid-area: content;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms linear 300ms, visibility 0ms linear 0ms;
   }
 
   .technology-info header {
