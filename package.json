@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rollup -c",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "deploy": "node ./deploy-gh-pages.js",
+    "deploy": "npm run build && gh-pages -d public -t true -m \"deploy: update website\"",
     "dev": "rollup -c -w",
     "start": "sirv public --single"
   },
