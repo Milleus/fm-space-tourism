@@ -1,16 +1,7 @@
-<script lang="ts" context="module">
-  export const Paths: { [key: string]: string } = {
-    DESIGN_SYSTEM: "/design-system",
-    HOME: "/",
-    DESTINATION: "/destination",
-    CREW: "/crew",
-    TECHNOLOGY: "/technology",
-  };
-</script>
-
 <script lang="ts">
   import page from "page";
 
+  import { Paths } from "./paths";
   import Crew from "./pages/Crew.svelte";
   import DesignSystem from "./pages/DesignSystem.svelte";
   import Destination from "./pages/Destination.svelte";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Paths } from "../App.svelte";
+  import { Paths } from "../paths";
   import Navigation from "../shared-components/Navigation.svelte";
 </script>
 

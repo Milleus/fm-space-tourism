@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Paths } from "../App.svelte";
+  import { Paths } from "../paths";
   import Button from "../shared-components/Button.svelte";
   import Header from "../components/Header.svelte";
 </script>
