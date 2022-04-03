@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Dave Quah | Frontend Mentor - Space Tourism</title>
+
+  <script>
+    /**
+     * GitHub Pages SPA support
+     * This snippet redirects all 404 traffic to index.html so that the SPA router can attempt to resolve the url.
+     *
+     * pathSegmentsToKeep is the number of path segments to keep in the url.
+     * 0 if using custom domain
+     * 1 if using default GitHub pages (i.e. https://username.github.io/repo-name/)
+     */
+    var pathSegmentsToKeep = 0;
+    var l = window.location;
+
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
