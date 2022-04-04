@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
+
   import { data } from "../data";
   import Header from "../components/Header.svelte";
   import SliderNumbers from "../shared-components/SliderNumbers.svelte";
@@ -15,7 +17,11 @@
 <div class="technology">
   <Header />
 
-  <main id="main" class="grid-container grid-container--technology flow">
+  <main
+    id="main"
+    class="grid-container grid-container--technology flow"
+    in:fade
+  >
     <h1 class="numbered-title">
       <span aria-hidden="true">03</span> Space Launch 101
     </h1>

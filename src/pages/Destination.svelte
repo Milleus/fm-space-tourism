@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
+
   import { data } from "../data";
   import Header from "../components/Header.svelte";
   import Tabs from "../shared-components/Tabs.svelte";
@@ -19,7 +21,11 @@
 <div class="destination">
   <Header />
 
-  <main id="main" class="grid-container grid-container--destination flow">
+  <main
+    id="main"
+    class="grid-container grid-container--destination flow"
+    in:fade
+  >
     <h1 class="numbered-title">
       <span aria-hidden="true">01</span> Pick your destination
     </h1>

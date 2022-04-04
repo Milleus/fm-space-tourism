@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
+
   import { data } from "../data";
   import Header from "../components/Header.svelte";
   import SliderDots from "../shared-components/SliderDots.svelte";
@@ -19,7 +21,7 @@
 <div class="crew">
   <Header />
 
-  <main id="main" class="grid-container grid-container--crew flow">
+  <main id="main" class="grid-container grid-container--crew flow" in:fade>
     <h1 class="numbered-title">
       <span aria-hidden="true">02</span> Meet your crew
     </h1>

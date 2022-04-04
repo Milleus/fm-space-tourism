@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
+
   import { Paths } from "../paths";
   import Button from "../shared-components/Button.svelte";
   import Header from "../components/Header.svelte";
@@ -7,7 +9,7 @@
 <div class="home">
   <Header />
 
-  <main id="main" class="grid-container grid-container--home">
+  <main id="main" class="grid-container grid-container--home" in:fade>
     <div>
       <h1 class="uppercase text-accent ff-sans-cond fs-500 letter-spacing-1">
         So, you want to travel to <span
