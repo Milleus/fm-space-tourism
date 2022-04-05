@@ -147,7 +147,7 @@
     width: 100%; /* fallback */
     width: calc(var(--length) * 100%);
     transform: translate(calc(var(--index, 0) / var(--length) * -100%));
-    transition: transform 300ms ease-in-out;
+    transition: transform 600ms ease-in-out;
   }
 
   .grid-container--crew > .crew-images picture {
