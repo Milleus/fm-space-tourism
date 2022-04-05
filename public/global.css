@@ -99,7 +99,7 @@ picture {
   max-width: 100%;
 }
 
-:where(img, picture):not([hidden]){
+:where(img, picture):not([hidden]) {
   display: block;
 }
 

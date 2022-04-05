@@ -201,7 +201,7 @@
           <Tabs
             names={["Active", "Hovered", "Idle"]}
             ariaLabel="description of list"
-            ariaControlsPrefix="tabpanel"
+            ariaControlsPrefix="tabs"
             activeIndex={0}
           />
           <p
@@ -214,7 +214,7 @@
           <SliderDots
             names={["Active", "Hovered", "Idle"]}
             ariaLabel="description of list"
-            ariaControlsPrefix="tabpanel"
+            ariaControlsPrefix="dots"
             activeIndex={0}
           />
           <p
@@ -227,7 +227,7 @@
           <SliderNumbers
             length={3}
             ariaLabel="description of list"
-            ariaControls="tabpanel-id"
+            ariaControlsPrefix="numbers"
             activeIndex={0}
           />
           <p
