@@ -123,7 +123,7 @@
     background-image: url("../assets/crew/background-crew-mobile.jpg");
     overflow-x: hidden;
     --index: 0;
-    --length: 1;
+    --length: 3;
   }
 
   .grid-container--crew {
@@ -236,7 +236,6 @@
     }
 
     .grid-container--crew > .crew-images {
-      grid-area: image;
       justify-self: initial;
       align-items: initial;
       display: grid;

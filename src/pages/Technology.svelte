@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { afterUpdate, onMount } from "svelte";
   import { fade } from "svelte/transition";
 
   import { data } from "../data";
@@ -12,6 +13,47 @@
   const handleUpdate = (e: CustomEvent<{ index: number }>) => {
     tabIndex = e.detail.index;
   };
+
+  /* Swipe animation */
+  let container = null;
+  let x0 = null;
+
+  onMount(() => {
+    container = document.querySelector<HTMLElement>(".technology");
+    container.style.setProperty("--length", technology.length.toString());
+    container.style.setProperty("--index", tabIndex.toString());
+  });
+
+  afterUpdate(() => {
+    container.style.setProperty("--index", tabIndex.toString());
+  });
+
+  const unify = (e: MouseEvent | TouchEvent) => {
+    return e instanceof TouchEvent ? e.changedTouches[0] : e;
+  };
+
+  const handleLock = (e: MouseEvent | TouchEvent) => {
+    x0 = unify(e).clientX;
+  };
+
+  const handleMove = (e: MouseEvent | TouchEvent) => {
+    if (x0 || x0 === 0) {
+      const winWidth = window.innerWidth;
+      const dx = unify(e).clientX - x0;
+      const sign = Math.sign(dx);
+      let threshold = ((sign * dx) / winWidth).toFixed(2);
+
+      if (
+        (tabIndex > 0 || sign < 0) &&
+        (tabIndex < technology.length - 1 || sign > 0) &&
+        Number(threshold) > 0.2
+      ) {
+        tabIndex = tabIndex - sign;
+      }
+
+      x0 = null;
+    }
+  };
 </script>
 
 <div class="technology">
@@ -21,6 +63,10 @@
     id="main"
     class="grid-container grid-container--technology flow"
     in:fade
+    on:mousedown={handleLock}
+    on:touchstart={handleLock}
+    on:mouseup={handleMove}
+    on:touchend={handleMove}
   >
     <h1 class="numbered-title">
       <span aria-hidden="true">03</span> Space Launch 101
@@ -73,6 +119,8 @@
     background-size: cover;
     background-position: bottom center;
     background-image: url("../assets/technology/background-technology-mobile.jpg");
+    --index: 0;
+    --length: 4;
   }
 
   .grid-container--technology {
