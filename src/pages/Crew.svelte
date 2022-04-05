@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { afterUpdate, onMount } from "svelte";
   import { fade } from "svelte/transition";
 
   import { data } from "../data";
@@ -16,12 +17,66 @@
   const handleUpdate = (e: CustomEvent<{ index: number }>) => {
     tabIndex = e.detail.index;
   };
+
+  /* Swipe animation */
+  let container = null;
+  let x0 = null;
+
+  onMount(() => {
+    container = document.querySelector<HTMLElement>(".crew");
+    container.style.setProperty("--length", crew.length.toString());
+    container.style.setProperty("--index", tabIndex.toString());
+  });
+
+  afterUpdate(() => {
+    container.style.setProperty("--index", tabIndex.toString());
+  });
+
+  const unify = (e: MouseEvent | TouchEvent) => {
+    return e instanceof TouchEvent ? e.changedTouches[0] : e;
+  };
+
+  const handleLock = (e: MouseEvent | TouchEvent) => {
+    x0 = unify(e).clientX;
+  };
+
+  const handleMove = (e: MouseEvent | TouchEvent) => {
+    if (x0 || x0 === 0) {
+      const winWidth = window.innerWidth;
+      const dx = unify(e).clientX - x0;
+      const sign = Math.sign(dx);
+      let threshold = ((sign * dx) / winWidth).toFixed(2);
+
+      if (
+        (tabIndex > 0 || sign < 0) &&
+        (tabIndex < crew.length - 1 || sign > 0) &&
+        Number(threshold) > 0.2
+      ) {
+        tabIndex = tabIndex - sign;
+      }
+
+      x0 = null;
+    }
+  };
+
+  const preventDragNavigation = (e: TouchEvent) => {
+    e.preventDefault();
+  };
 </script>
 
 <div class="crew">
   <Header />
 
-  <main id="main" class="grid-container grid-container--crew flow" in:fade>
+  <main
+    id="main"
+    class="grid-container grid-container--crew flow"
+    in:fade
+    on:mousedown={handleLock}
+    on:touchstart={handleLock}
+    on:mouseup={handleMove}
+    on:touchend={handleMove}
+    on:touchmove={preventDragNavigation}
+  >
     <h1 class="numbered-title">
       <span aria-hidden="true">02</span> Meet your crew
     </h1>
@@ -52,12 +107,14 @@
       </article>
     {/each}
 
-    {#each crew as crewMember, i}
-      <picture data-visible={i === tabIndex}>
-        <source srcset={crewMember.images.webp} type="image/webp" />
-        <img src={crewMember.images.png} alt={crewMember.name} />
-      </picture>
-    {/each}
+    <section class="crew-images">
+      {#each crew as crewMember, i}
+        <picture data-visible={i === tabIndex}>
+          <source srcset={crewMember.images.webp} type="image/webp" />
+          <img src={crewMember.images.png} alt={crewMember.name} />
+        </picture>
+      {/each}
+    </section>
   </main>
 </div>
 
@@ -69,6 +126,9 @@
     background-size: cover;
     background-position: bottom center;
     background-image: url("../assets/crew/background-crew-mobile.jpg");
+    overflow: hidden;
+    --index: 0;
+    --length: 1;
   }
 
   .grid-container--crew {
@@ -84,19 +144,36 @@
     grid-area: title;
   }
 
-  .grid-container--crew > picture {
+  .grid-container--crew > .crew-images {
     grid-area: image;
-    max-width: 60%;
-    border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
+    justify-self: flex-start;
+    display: flex;
+    align-items: center;
+    width: 100%; /* fallback */
+    width: calc(var(--length) * 100%);
+    transform: translate(calc(var(--index, 0) / var(--length) * -100%));
+    transition: transform 300ms ease-in-out;
+  }
+
+  .grid-container--crew > .crew-images picture {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* fallback */
+    width: calc(100% / var(--length));
     opacity: 0;
     visibility: hidden;
     transition: opacity 300ms linear 0ms, visibility 0ms linear 300ms;
   }
 
-  .grid-container--crew > picture[data-visible="true"] {
+  .grid-container--crew > .crew-images picture[data-visible="true"] {
     opacity: 1;
     visibility: visible;
     transition: opacity 300ms linear 300ms, visibility 0ms linear 0ms;
+  }
+
+  .grid-container--crew > .crew-images picture img {
+    max-width: 60%;
+    pointer-events: none;
   }
 
   .grid-container--crew > .dots {
@@ -164,8 +241,26 @@
         ". tabs image image";
     }
 
-    .grid-container--crew > picture {
+    .grid-container--crew > .crew-images {
+      grid-area: image;
+      justify-self: initial;
+      align-items: initial;
+      display: grid;
+      grid-template-areas: "inner-image";
+      width: 100%;
+      transform: none;
+      transition: none;
+    }
+
+    .grid-container--crew > .crew-images picture {
+      grid-area: inner-image;
       align-self: end;
+      display: block;
+      justify-content: initial;
+      width: 100%;
+    }
+
+    .grid-container--crew > .crew-images picture img {
       max-width: 90%;
     }
   }
