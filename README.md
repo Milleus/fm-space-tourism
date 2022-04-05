@@ -1,109 +1,79 @@
-*Psst — looking for a more complete solution? Check out [SvelteKit](https://kit.svelte.dev), the official framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing.*
+# Frontend Mentor - Space tourism website solution
 
-*Looking for a shareable component template instead? You can [use SvelteKit for that as well](https://kit.svelte.dev/docs#packaging) or the older [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
----
+## Table of contents
 
-# svelte app
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+## Overview
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+### The challenge
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+Users should be able to:
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+- View the optimal layout for each of the website's pages depending on their device's screen size
+- See hover states for all interactive elements on the page
+- View each page and be able to toggle between the tabs to see new information
 
+### Screenshot
 
-## Get started
+<!-- Home page (desktop view) -->
 
-Install the dependencies...
+Home page (desktop view)
+![home page desktop view](/docs/home-desktop.png)
+Destination page (desktop view)
+![destination page desktop view](/docs/destination-desktop.png)
+Crew page (desktop view)
+![crew page desktop view](/docs/crew-desktop.png)
+Technology page (desktop view)
+![technology page desktop view](/docs/technology-desktop.png)
 
-```bash
-cd svelte-app
-npm install
-```
+### Links
 
-...then start [Rollup](https://rollupjs.org):
+- Solution URL: [https://www.frontendmentor.io/solutions/space-tourism-multipage-website-S1Bz0gqm5](https://www.frontendmentor.io/solutions/space-tourism-multipage-website-S1Bz0gqm5)
+- Live Site URL: [https://space-tourism.davequah.com/](https://space-tourism.davequah.com/)
 
-```bash
-npm run dev
-```
+## My process
 
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+### Built with
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Svelte](https://svelte.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
+### What I learned
 
-## Building and running in production mode
+- Set up a project with Svelte + TypeScript
+- Code in Svelte
+- Use some of the [modern CSS techniques](https://gist.github.com/Milleus/9cd949c9b316d4179518c28b804348f9)
+- Deploy a Svelte project to GitHub pages with a subdomain
+- Work around the page reload of a Single Page Application (SPA) on GitHub pages
 
-To create an optimised version of the app:
+### Useful resources
 
-```bash
-npm run build
-```
+- [What to reset in CSS](https://piccalil.li/blog/a-modern-css-reset/)
+- [How to remove animations for people who turn it off](https://css-tricks.com/introduction-reduced-motion-media-query/)
+- [How to convert images to webp format](https://web.dev/codelab-serve-images-webp/)
+- [How to create a space utility](https://every-layout.dev/layouts/stack/)
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+## Author
 
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+- Website - [Dave Quah](https://milleus.github.io/)
+- Frontend Mentor - [@Milleus](https://www.frontendmentor.io/profile/Milleus)
+- CodePen - [@Milleus](https://codepen.io/Milleus)
+- LinkedIn - [@Milleus](https://www.linkedin.com/in/milleus/)
+- Twitter - [@Milleus](https://www.twitter.com/Milleus)
