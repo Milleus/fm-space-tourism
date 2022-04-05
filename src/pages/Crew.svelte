@@ -58,10 +58,6 @@
       x0 = null;
     }
   };
-
-  const preventDragNavigation = (e: TouchEvent) => {
-    e.preventDefault();
-  };
 </script>
 
 <div class="crew">
@@ -75,7 +71,6 @@
     on:touchstart={handleLock}
     on:mouseup={handleMove}
     on:touchend={handleMove}
-    on:touchmove={preventDragNavigation}
   >
     <h1 class="numbered-title">
       <span aria-hidden="true">02</span> Meet your crew
@@ -126,7 +121,7 @@
     background-size: cover;
     background-position: bottom center;
     background-image: url("../assets/crew/background-crew-mobile.jpg");
-    overflow: hidden;
+    overflow-x: hidden;
     --index: 0;
     --length: 1;
   }
@@ -173,7 +168,6 @@
 
   .grid-container--crew > .crew-images picture img {
     max-width: 60%;
-    pointer-events: none;
   }
 
   .grid-container--crew > .dots {
