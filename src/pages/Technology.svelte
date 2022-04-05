@@ -159,9 +159,9 @@
       align-content: start;
       grid-template-columns:
         minmax(2rem, 1fr)
-        minmax(0, 7rem)
-        minmax(0, 41rem)
-        minmax(0, 32rem)
+        min-content
+        minmax(min-content, 3fr)
+        minmax(0, 3fr)
         minmax(2rem, 1fr);
       grid-template-areas:
         ". title title title ."
