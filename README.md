@@ -11,7 +11,6 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -27,16 +26,26 @@ Users should be able to:
 
 ### Screenshot
 
-<!-- Home page (desktop view) -->
+Desktop view
 
-Home page (desktop view)
-![home page desktop view](/docs/home-desktop.png)
-Destination page (desktop view)
-![destination page desktop view](/docs/destination-desktop.png)
-Crew page (desktop view)
-![crew page desktop view](/docs/crew-desktop.png)
-Technology page (desktop view)
-![technology page desktop view](/docs/technology-desktop.png)
+<img src="./docs/home-desktop.png?raw=true" width="100%" alt="home page desktop view"/>
+<img src="./docs/destination-desktop.png?raw=true" width="100%" alt="destination page desktop view"/>
+<img src="./docs/crew-desktop.png?raw=true" width="100%" alt="crew page desktop view"/>
+<img src="./docs/technology-desktop.png?raw=true" width="100%" alt="technology page desktop view"/>
+
+Tablet view
+
+<img src="./docs/home-tablet.png?raw=true" width="600px" alt="home page tablet view"/>
+<img src="./docs/destination-tablet.png?raw=true" width="600px" alt="destination page tablet view"/>
+<img src="./docs/crew-tablet.png?raw=true" width="600px" alt="crew page tablet view"/>
+<img src="./docs/technology-tablet.png?raw=true" width="600px" alt="technology page tablet view"/>
+
+Mobile view
+
+<img src="./docs/home-mobile.png?raw=true" width="420px" alt="home page mobile view"/>
+<img src="./docs/destination-mobile.png?raw=true" width="420px" alt="destination page mobile view"/>
+<img src="./docs/crew-mobile.png?raw=true" width="420px" alt="crew page mobile view"/>
+<img src="./docs/technology-mobile.png?raw=true" width="420px" alt="technology page mobile view"/>
 
 ### Links
 
@@ -66,7 +75,6 @@ Technology page (desktop view)
 ### Useful resources
 
 - [What to reset in CSS](https://piccalil.li/blog/a-modern-css-reset/)
-- [How to remove animations for people who turn it off](https://css-tricks.com/introduction-reduced-motion-media-query/)
 - [How to convert images to webp format](https://web.dev/codelab-serve-images-webp/)
 - [How to create a space utility](https://every-layout.dev/layouts/stack/)
 
