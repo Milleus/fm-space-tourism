@@ -23,6 +23,7 @@ Users should be able to:
 - View the optimal layout for each of the website's pages depending on their device's screen size
 - See hover states for all interactive elements on the page
 - View each page and be able to toggle between the tabs to see new information
+- Swipe to navigate the Crew and Technology page on mobile device
 
 ### Screenshot
 
@@ -71,12 +72,14 @@ Mobile view
 - Use some of the [modern CSS techniques](https://gist.github.com/Milleus/9cd949c9b316d4179518c28b804348f9)
 - Deploy a Svelte project to GitHub pages with a subdomain
 - Work around the page reload of a Single Page Application (SPA) on GitHub pages
+- Implement swipe gesture
 
 ### Useful resources
 
 - [What to reset in CSS](https://piccalil.li/blog/a-modern-css-reset/)
 - [How to convert images to webp format](https://web.dev/codelab-serve-images-webp/)
 - [How to create a space utility](https://every-layout.dev/layouts/stack/)
+- [How to implement swipe gestures](https://css-tricks.com/simple-swipe-with-vanilla-javascript/)
 
 ## Author
 
