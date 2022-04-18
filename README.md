@@ -51,7 +51,7 @@ Mobile view
 ### Links
 
 - Solution URL: [https://www.frontendmentor.io/solutions/space-tourism-multipage-website-S1Bz0gqm5](https://www.frontendmentor.io/solutions/space-tourism-multipage-website-S1Bz0gqm5)
-- Live Site URL: [https://space-tourism.davequah.com/](https://space-tourism.davequah.com/)
+- Live Site URL: [https://Milleus.github.io/fm-space-tourism/](https://Milleus.github.io/fm-space-tourism/)
 
 ## My process
 
